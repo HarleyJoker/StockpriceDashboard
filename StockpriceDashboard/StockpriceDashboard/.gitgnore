@@ -1,0 +1,6 @@
+﻿# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+.vs/
