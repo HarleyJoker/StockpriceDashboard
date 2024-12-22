@@ -1,0 +1,6 @@
+@StockpriceDashboard_HostAddress = http://localhost:5126
+
+GET {{StockpriceDashboard_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
