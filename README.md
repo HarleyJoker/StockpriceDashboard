@@ -21,3 +21,23 @@ The **Stock Price Dashboard Web API** is a RESTful API that provides historical 
    ```bash
    git clone <repository-url>
    cd StockpriceDashboard
+
+### **Configure API key in appsettings.json**
+{
+  "AlphaVantage": {
+    "BaseUrl": "https://alpha-vantage.p.rapidapi.com/query",
+    "ApiKey": "YOUR_API_KEY"
+  }
+}
+
+###  **Restore dependencies and run the project
+dotnet restore
+dotnet run
+
+
+### **Access Swagger for API testing and documentation
+http://localhost:<port>/swagger
+
+Features
+Fetch daily stock prices for companies like MSFT, AAPL, NFLX, and AMZN.
+Includes caching for performance optimization.
