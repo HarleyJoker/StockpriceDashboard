@@ -11,6 +11,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMemoryCache();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:57838") 
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 // Register the StockService
 builder.Services.AddScoped<StockService>();
 
@@ -22,6 +32,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
