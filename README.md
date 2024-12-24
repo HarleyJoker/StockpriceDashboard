@@ -30,14 +30,14 @@ The **Stock Price Dashboard Web API** is a RESTful API that provides historical 
   }
 }
 
-###  **Restore dependencies and run the project
+###  **Restore dependencies and run the project**
 dotnet restore
 dotnet run
 
 
-### **Access Swagger for API testing and documentation
+### **Access Swagger for API testing and documentation**
 http://localhost:<port>/swagger
 
-Features
-Fetch daily stock prices for companies like MSFT, AAPL, NFLX, and AMZN.
+### **Features**
+Fetch daily stock prices for companies like MSFT, AAPL, NFLX, FB, AMZN.
 Includes caching for performance optimization.
