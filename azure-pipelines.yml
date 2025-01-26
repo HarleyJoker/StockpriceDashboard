@@ -39,5 +39,5 @@ steps:
   inputs:
     azureSubscription: '<Service Connection>'
     appType: 'webApp'
-    WebAppName: '<Github-Connection-StockPriceDashboard>'
+    WebAppName: '<StockpriceDashboard>'
     package: '$(Build.ArtifactStagingDirectory)'
