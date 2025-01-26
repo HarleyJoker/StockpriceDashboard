@@ -21,23 +21,23 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-  - task: UseDotNet@2
-    inputs:
-      packageType: 'sdk'
-      version: '7.x'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '7.x'
 
-  - script: dotnet restore
-    displayName: 'Restore Packages'
+- script: dotnet restore
+  displayName: 'Restore Packages'
 
-  - script: dotnet build --configuration $(buildConfiguration)
-    displayName: 'Build API'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'Build API'
 
-  - script: dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
-    displayName: 'Publish API'
+- script: dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+  displayName: 'Publish API'
 
-  - task: AzureRmWebAppDeployment@4
-    inputs:
-      azureSubscription: '<Service Connection>'
-      appType: 'webApp'
-      WebAppName: '<Github-Connection-StockPriceDashboard>'
-      package: '$(Build.ArtifactStagingDirectory)'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    azureSubscription: '<Service Connection>'
+    appType: 'webApp'
+    WebAppName: '<Github-Connection-StockPriceDashboard>'
+    package: '$(Build.ArtifactStagingDirectory)'
