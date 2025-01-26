@@ -1,0 +1,44 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '7.x'
+
+  - script: dotnet restore
+    displayName: 'Restore Packages'
+
+  - script: dotnet build --configuration $(buildConfiguration)
+    displayName: 'Build API'
+
+  - script: dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+    displayName: 'Publish API'
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      azureSubscription: '<Service Connection>'
+      appType: 'webApp'
+      WebAppName: '<Github-Connection-StockPriceDashboard>'
+      package: '$(Build.ArtifactStagingDirectory)'
