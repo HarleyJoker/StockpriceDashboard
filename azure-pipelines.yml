@@ -37,7 +37,7 @@ steps:
 
 - task: AzureRmWebAppDeployment@4
   inputs:
-    azureSubscription: 'github.com_HarleyJoker'
+    azureSubscription: 'Github-Connection-StockPriceDashboard'
     appType: 'webApp'
-    WebAppName: '<StockPriceDashboard>'
+    WebAppName: 'StockPriceDashboard'
     package: '$(Build.ArtifactStagingDirectory)'
